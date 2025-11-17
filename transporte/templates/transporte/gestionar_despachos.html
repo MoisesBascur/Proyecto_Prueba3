@@ -1,0 +1,114 @@
+{% extends 'transporte/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">Gestionar Despachos</h1>
+    <p>Aquí puede ver, crear, editar y eliminar los registros de despachos.</p>
+
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#formModal">
+        <i class="bi bi-plus-lg me-2"></i> Crear Nuevo Despacho
+    </button>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            Listado de Despachos
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Ruta</th>
+                            <th scope="col">Vehículo/Aeronave</th>
+                            <th scope="col">Costo</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crud-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Datos del Despacho</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <input type="hidden" id="despacho-id">
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fecha_despacho" class="form-label">Fecha de Despacho</label>
+                            <input type="date" class="form-control" id="fecha_despacho" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="estado" class="form-label">Estado</label>
+                            <select class="form-select" id="estado" required>
+                                <option value="PENDIENTE">Pendiente</option>
+                                <option value="EN RUTA">En Ruta</option>
+                                <option value="ENTREGADO">Entregado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="costo_envio" class="form-label">Costo de Envío</label>
+                        <input type="number" step="0.01" class="form-control" id="costo_envio" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ruta" class="form-label">Ruta</label>
+                        <select class="form-select" id="ruta" required>
+                            </select>
+                    </div>
+
+                    <h6 class="mt-4">Asignación (Terrestre O Aéreo)</h6>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="vehiculo" class="form-label">Vehículo (Si es terrestre)</label>
+                            <select class="form-select" id="vehiculo">
+                                <option value="">(Ninguno)</option>
+                                </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="conductor" class="form-label">Conductor (Si es terrestre)</label>
+                            <select class="form-select" id="conductor">
+                                <option value="">(Ninguno)</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="aeronave" class="form-label">Aeronave (Si es aéreo)</label>
+                            <select class="form-select" id="aeronave">
+                                <option value="">(Ninguna)</option>
+                                </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="piloto" class="form-label">Piloto (Si es aéreo)</label>
+                            <select class="form-select" id="piloto">
+                                <option value="">(Ninguno)</option>
+                                </select>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-button">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

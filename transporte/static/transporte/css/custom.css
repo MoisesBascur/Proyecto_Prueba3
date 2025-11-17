@@ -1,0 +1,20 @@
+/* custom.css */
+
+body {
+    /* Evita el scroll horizontal causado por el sidebar */
+    overflow-x: hidden;
+}
+
+.nav-link {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: #495057; /* Un gris un poco más claro */
+}
+
+/* Estilo para el enlace activo del sidebar */
+.nav-link.active {
+    background-color: #0d6efd; /* Azul de Bootstrap */
+    font-weight: bold;
+}

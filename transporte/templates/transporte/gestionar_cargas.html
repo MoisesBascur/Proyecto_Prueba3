@@ -1,0 +1,83 @@
+{% extends 'transporte/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">Gestionar Cargas</h1>
+    <p>Aquí puede ver, crear, editar y eliminar las cargas asociadas a un despacho.</p>
+
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#formModal">
+        <i class="bi bi-plus-lg me-2"></i> Registrar Nueva Carga
+    </button>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            Listado de Cargas
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Despacho (ID)</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Peso (kg)</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crud-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Datos de la Carga</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <input type="hidden" id="carga-id">
+                    
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="descripcion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="despacho" class="form-label">Despacho (ID)</label>
+                        <select class="form-select" id="despacho" required>
+                            </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cliente" class="form-label">Cliente</label>
+                        <select class="form-select" id="cliente" required>
+                            </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="peso_kg" class="form-label">Peso (kg)</label>
+                            <input type="number" step="0.01" class="form-control" id="peso_kg" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="valor_declarado" class="form-label">Valor Declarado ($)</label>
+                            <input type="number" step="0.01" class="form-control" id="valor_declarado">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-button">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

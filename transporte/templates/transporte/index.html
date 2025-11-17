@@ -1,0 +1,26 @@
+{% extends 'transporte/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="{% static 'transporte/images/logo.jpg' %}" alt="Logo" width="72" height="72">
+        <h1 class="display-5 fw-bold text-body-emphasis">Logística Global Ltda.</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Bienvenidos a Logística Global, su socio estratégico en transporte de carga terrestre y aérea. 
+                Modernizamos la gestión de flotas, unificando la administración de vehículos, aeronaves, 
+                conductores y despachos en una plataforma centralizada.
+            </p>
+            <p>
+                Nuestra solución tecnológica, desplegada en la nube de AWS, garantiza seguridad, escalabilidad 
+                y alta disponibilidad para todas sus operaciones nacionales e internacionales.
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{% url 'crud-despachos' %}" class="btn btn-primary btn-lg px-4 gap-3">Gestionar Despachos</a>
+                <a href="{% url 'crud-vehiculos' %}" class="btn btn-outline-secondary btn-lg px-4">Ver Flota</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

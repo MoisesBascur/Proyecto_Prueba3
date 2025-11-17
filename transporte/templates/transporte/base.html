@@ -1,0 +1,76 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logística Global Ltda.</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="{% static 'transporte/css/custom.css' %}">
+</head>
+<body>
+
+    <div class="d-flex">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; min-height: 100vh;">
+            <a href="{% url 'inicio' %}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <img src="{% static 'transporte/images/logo.jpg' %}" alt="Logo" width="32" height="32" class="me-2">
+                <span class="fs-4">Logística Global</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="{% url 'inicio' %}" class="nav-link text-white" aria-current="page">
+                        <i class="bi bi-house-door me-2"></i> Inicio
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-vehiculos' %}" class="nav-link text-white"><i class="bi bi-truck me-2"></i> CRUD Vehículos</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-aeronaves' %}" class="nav-link text-white"><i class="bi bi-airplane me-2"></i> CRUD Aeronaves</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-rutas' %}" class="nav-link text-white"><i class="bi bi-geo-alt me-2"></i> CRUD Rutas</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-conductores' %}" class="nav-link text-white"><i class="bi bi-person-badge me-2"></i> CRUD Conductores</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-pilotos' %}" class="nav-link text-white"><i class="bi bi-person-workspace me-2"></i> CRUD Pilotos</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-despachos' %}" class="nav-link text-white"><i class="bi bi-box-seam me-2"></i> CRUD Despachos</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-clientes' %}" class="nav-link text-white"><i class="bi bi-people me-2"></i> CRUD Clientes</a>
+                </li>
+                <li>
+                    <a href="{% url 'crud-cargas' %}" class="nav-link text-white"><i class="bi bi-box me-2"></i> CRUD Cargas</a>
+                </li>
+            </ul>
+            <hr>
+            <div>
+                <a href="#" id="logout-button" class="d-flex align-items-center text-white text-decoration-none">
+                    <i class="bi bi-box-arrow-right me-2"></i>
+                    <strong>Cerrar Sesión</strong>
+                </a>
+            </div>
+            <hr>
+            <div class="text-muted small">
+                Moises-Bascur/Ricardo-Fernandez/AP172n4/2025
+            </div>
+        </div>
+
+        <div class="flex-grow-1 p-4" style="overflow-x: auto;">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'transporte/js/app.js' %}"></script>
+</body>
+</html>

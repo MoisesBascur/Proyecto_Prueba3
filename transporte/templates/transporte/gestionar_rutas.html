@@ -1,0 +1,76 @@
+{% extends 'transporte/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="mt-4">Gestionar Rutas</h1>
+    <p>Aquí puede ver, crear, editar y eliminar las rutas terrestres y aéreas.</p>
+
+    <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#formModal">
+        <i class="bi bi-plus-lg me-2"></i> Crear Nueva Ruta
+    </button>
+
+    <div class="card shadow-sm">
+        <div class="card-header">
+            Listado de Rutas
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Origen</th>
+                            <th scope="col">Destino</th>
+                            <th scope="col">Tipo Transporte</th>
+                            <th scope="col">Distancia (km)</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="crud-table-body">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Datos de la Ruta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <input type="hidden" id="ruta-id">
+                    
+                    <div class="mb-3">
+                        <label for="origen" class="form-label">Origen</label>
+                        <input type="text" class="form-control" id="origen" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="destino" class="form-label">Destino</label>
+                        <input type="text" class="form-control" id="destino" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="tipo_transporte" class="form-label">Tipo de Transporte</label>
+                        <select class="form-select" id="tipo_transporte" required>
+                            <option value="TERRESTRE">Terrestre</option>
+                            <option value="AEREO">Aéreo</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="distancia_km" class="form-label">Distancia (km)</label>
+                        <input type="number" step="0.01" class="form-control" id="distancia_km" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-button">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
